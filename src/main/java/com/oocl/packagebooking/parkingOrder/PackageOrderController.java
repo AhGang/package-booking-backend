@@ -1,4 +1,4 @@
-package com.oocl.packagebooking.controller;
+package com.oocl.packagebooking.parkingOrder;
 
 import com.oocl.packagebooking.entity.PackageOrder;
 import com.oocl.packagebooking.service.PackageOrderService;
@@ -23,6 +23,11 @@ public class PackageOrderController {
         return ResponseEntity.status(HttpStatus.OK).body(packageOrders);
     }
 
+    @GetMapping(path = "/{id}")
+    public ResponseEntity getAPackageOrder(@PathVariable String id) {
+        PackageOrder packageOrder  = packageOrderService.getAPackageItem(id);
+        return ResponseEntity.status(HttpStatus.OK).body(packageOrder);
+    }
 
     @PostMapping
     public ResponseEntity createAPackageOrder(@RequestBody PackageOrder packageOrder){

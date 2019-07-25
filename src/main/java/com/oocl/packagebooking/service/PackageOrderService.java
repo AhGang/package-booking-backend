@@ -5,6 +5,7 @@ import com.oocl.packagebooking.repository.PackageOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 @Service
 public class PackageOrderService {
@@ -17,8 +18,7 @@ public class PackageOrderService {
     }
 
     public void addParkingLot(PackageOrder packageOrder) {
-        System.out.println("================================");
-        System.out.println(packageOrder);
+        packageOrder.setBookTime(new Date());
         packageOrderRepository.save(packageOrder);
     }
 
@@ -28,5 +28,12 @@ public class PackageOrderService {
 
     public void deleteAPackageOrder(String id) {
         packageOrderRepository.deleteById(id);
+    }
+
+    public PackageOrder getAPackageItem(String id) {
+        PackageOrder packageOrder = packageOrderRepository.findById(id).get();
+        packageOrder.setBookTime(new Date());
+        packageOrderRepository.save(packageOrder);
+        return packageOrder;
     }
 }

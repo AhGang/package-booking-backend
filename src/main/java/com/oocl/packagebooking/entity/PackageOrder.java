@@ -31,6 +31,12 @@ public class PackageOrder {
     public PackageOrder() {
     }
 
+    public PackageOrder(String orderID, String orderName, int phone) {
+        this.orderID = orderID;
+        this.orderName = orderName;
+        this.phone = phone;
+    }
+
     public String getOrderID() {
         return orderID;
     }
