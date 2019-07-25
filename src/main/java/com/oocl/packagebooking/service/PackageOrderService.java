@@ -18,11 +18,19 @@ public class PackageOrderService {
     }
 
     public void addParkingLot(PackageOrder packageOrder) {
-        packageOrder.setBookTime(new Date());
         packageOrderRepository.save(packageOrder);
     }
 
-    public PackageOrder updateAPackageOrder(String id, PackageOrder order) {
+    public PackageOrder updateAPackageOrder(String orderId,String msg) {
+        PackageOrder packageOrder = packageOrderRepository.findByorderID(orderId);
+        if(msg == "book"){
+            packageOrder.setBookTime(new Date());
+            packageOrder.setStatus("已预约");
+        }else{
+            packageOrder.setStatus("已取件");
+        }
+
+        packageOrderRepository.save(packageOrder);
         return null;
     }
 

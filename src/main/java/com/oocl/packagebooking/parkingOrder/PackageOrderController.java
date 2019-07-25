@@ -35,9 +35,8 @@ public class PackageOrderController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @PutMapping(path = "/{id}")
-    public ResponseEntity putAPackageOrder(@PathVariable String id,@RequestBody PackageOrder order){
-
-        PackageOrder packageOrder = packageOrderService.updateAPackageOrder(id,order);
+    public ResponseEntity putAPackageOrder(@PathVariable String id,String msg){
+        PackageOrder packageOrder = packageOrderService.updateAPackageOrder(id,msg);
         return ResponseEntity.status(HttpStatus.OK).body(packageOrder);
 
     }
